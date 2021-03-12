@@ -49,8 +49,9 @@ class Grid:
             return self.neighbor_actions2[random_action]
 
     def generate_episode(self):
+        # this function is for Monte Carlo to generate episodes
         initial_state = np.random.choice(self.states[:-1])
-        episode = []  # episode contains [s1, s2, reward,...st-1, st, final_reward]
+        episode = []  # episode contains [s0, action0, reward1,s1, s1, action1,...sT-1, actionT-1, final_reward, sT]
         while True:
             if initial_state == self.terminate_state:
                 return episode

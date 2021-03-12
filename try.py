@@ -64,10 +64,10 @@ def generateEpisode():
         episode.append([list(initState), action, rewardSize, list(finalState)])
         initState = finalState
 
+
 for it in tqdm(range(numIterations)):
     episode = generateEpisode()
     G = 0
-    #print(episode)
     for i, step in enumerate(episode[::-1]):
         G = gamma*G + step[2]
         if step[0] not in [x[0] for x in episode[::-1][len(episode)-i:]]:

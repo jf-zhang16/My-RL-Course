@@ -45,7 +45,7 @@ numIterations = 10000
 V = np.zeros((gridSize, gridSize))
 returns = {(i, j):list() for i in range(gridSize) for j in range(gridSize)}
 print(returns)
-deltas = {(i, j):list() for i in range(gridSize) for j in range(gridSize)}
+# deltas = {(i, j):list() for i in range(gridSize) for j in range(gridSize)}
 states = [[i, j] for i in range(gridSize) for j in range(gridSize)]
 print(states[:-1])
 
@@ -74,5 +74,12 @@ for it in tqdm(range(numIterations)):
             idx = (step[0][0], step[0][1])
             returns[idx].append(G)
             newValue = np.average(returns[idx])
-            deltas[idx[0], idx[1]].append(np.abs(V[idx[0], idx[1]]-newValue))
+            # deltas[idx[0], idx[1]].append(np.abs(V[idx[0], idx[1]]-newValue))
             V[idx[0], idx[1]] = newValue
+
+# using gamma = 1
+plt.figure(figsize=(20,10))
+all_series = [list(x)[:50] for x in deltas.values()]
+for series in all_series:
+    plt.plot(series)
+

@@ -3,7 +3,7 @@ import numpy as np
 
 # state-values predicted by first view Monte Carlo
 play = Grid()
-iterations = 10000
+iterations = 100000
 values = np.zeros((4, 4))
 returns = {(i, j): list() for i in range(4) for j in range(4)}
 deltas = {(i, j): list() for i in range(4) for j in range(4)}
@@ -21,6 +21,9 @@ for a in range(iterations):
             newValue = np.average(returns[idx])
             # deltas[idx[0], idx[1]].append(np.abs(values[idx[0], idx[1]]-newValue))
             values[idx[0], idx[1]] = newValue
+    if a % 5000 == 0:
+        print(f'This is the No.{a} iterations.')
+        print(values)
 
 print(values)
 

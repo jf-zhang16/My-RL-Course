@@ -3,7 +3,7 @@ import numpy as np
 
 # state-values predicted by first view Monte Carlo
 play = Grid()
-iterations = 10
+iterations = 10000
 values = np.zeros((4, 4))
 returns = {(i, j): list() for i in range(4) for j in range(4)}
 deltas = {(i, j): list() for i in range(4) for j in range(4)}
